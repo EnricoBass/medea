@@ -24,7 +24,7 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return Users.query.get(int(user_id))
+    return User.query.get(int(user_id))
 
 
 ##CONNECT TO DB
@@ -33,7 +33,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class Users(UserMixin, db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), unique=True, nullable=False)
@@ -48,10 +48,10 @@ def home():
         logout_user()
     form = HomepageForm()
     if form.validate_on_submit():
-        if Users.query.filter_by(name=form.name.data).first():
+        if User.query.filter_by(name=form.name.data).first():
             flash("Mi dispiace, questo nome utente è già stato preso. Provane un altro.")
             return redirect(url_for('home'))
-        new_user = Users(
+        new_user = User(
             name=form.name.data,
             score=0,
         )
@@ -69,7 +69,7 @@ def question1():
         player_answer = request.args.get("answer")
         if player_answer == 'True':
             answer = False
-            answer_to_update = Users.query.get(current_user.id)
+            answer_to_update = User.query.get(current_user.id)
             answer_to_update.score = 25
             db.session.commit()
         else:
@@ -85,7 +85,7 @@ def question2():
         player_answer = request.args.get("answer")
         if player_answer == 'True':
             answer = True
-            answer_to_update = Users.query.get(current_user.id)
+            answer_to_update = User.query.get(current_user.id)
             answer_to_update.score = answer_to_update.score + 25
             db.session.commit()
         else:
@@ -101,7 +101,7 @@ def question3():
         player_answer = request.args.get("answer")
         if player_answer != 'True':
             answer = True
-            answer_to_update = Users.query.get(current_user.id)
+            answer_to_update = User.query.get(current_user.id)
             answer_to_update.score = answer_to_update.score + 25
             db.session.commit()
         else:
@@ -117,7 +117,7 @@ def question4():
         player_answer = request.args.get("answer")
         if player_answer == 'True':
             answer = True
-            answer_to_update = Users.query.get(current_user.id)
+            answer_to_update = User.query.get(current_user.id)
             answer_to_update.score = answer_to_update.score + 25
             db.session.commit()
         else:
@@ -133,7 +133,7 @@ def question5():
         player_answer = request.args.get("answer")
         if player_answer == 'True':
             answer = True
-            answer_to_update = Users.query.get(current_user.id)
+            answer_to_update = User.query.get(current_user.id)
             answer_to_update.score = answer_to_update.score + 25
             db.session.commit()
         else:
@@ -144,7 +144,7 @@ def question5():
 
 @app.route('/ranking', methods=['GET', 'POST'])
 def ranking():
-    all_users = Users.query.order_by(Users.score).all()
+    all_users = User.query.order_by(User.score).all()
     all_users.reverse()
     for i in range(len(all_users)):
         all_users[i].ranking = i+1
@@ -157,7 +157,7 @@ def ranking():
 def delete():
     answer = request.args.get('answer')
     if answer == 'True':
-        all_users = db.session.query(Users).all()
+        all_users = db.session.query(User).all()
         for user in all_users:
             db.session.delete(user)
         db.session.commit()
