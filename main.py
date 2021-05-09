@@ -14,7 +14,7 @@ class HomepageForm(FlaskForm):
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6c' #os.environ.get('SECRET_KEY') #'8BYkEfBA6O6donzWlSihBXox7C0sKR6c'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') #'8BYkEfBA6O6donzWlSihBXox7C0sKR6c'
 Bootstrap(app)
 
 # This part is required to log in a user so that I can link information to that profile.
@@ -26,8 +26,9 @@ login_manager.init_app(app)
 def load_user(user_id):
     return Users.query.get(int(user_id))
 
+
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///medea_quiz.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///medea_quiz.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
