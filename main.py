@@ -40,7 +40,7 @@ class User(UserMixin, db.Model):
     score = db.Column(db.Integer, nullable=False)
     ranking = db.Column(db.Integer)
 
-# db.create_all()
+db.create_all()
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
