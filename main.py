@@ -14,7 +14,7 @@ class HomepageForm(FlaskForm):
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') #'8BYkEfBA6O6donzWlSihBXox7C0sKR6c'
+app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6c' #os.environ.get('SECRET_KEY') #'8BYkEfBA6O6donzWlSihBXox7C0sKR6c'
 Bootstrap(app)
 
 # This part is required to log in a user so that I can link information to that profile.
