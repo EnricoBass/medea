@@ -69,11 +69,11 @@ def question1():
         player_answer = request.args.get("answer")
         if player_answer == 'True':
             answer = False
+        else:
+            answer = True
             answer_to_update = User.query.get(current_user.id)
             answer_to_update.score = 25
             db.session.commit()
-        else:
-            answer = True
         return render_template('question1.html', answer_given=True, answer=answer)
     return render_template('question1.html')
 
