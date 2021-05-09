@@ -1,0 +1,94 @@
+{% include "header.html" %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+<header class="masthead" style="background-image: url('https://www.man-es.com/images/default-source/discover/power-to-gas-energy-storage_header.jpg?sfvrsn=7d368dff_4')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Domanda n.2</h1>
+            <span class="subheading">La ricerca di soluzioni alternative ai combustibili fossili</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <p>
+            <h1><strong>Gli investimenti di ENI nella ricerca di combustibili alternativi. </strong></h1>
+          </p>
+            <p>
+                Eni sta cercando strade alternative ai combustibili fossili, responsabili di una buona fetta della CO2 normalmente riversata in atmosfera. Una via promettente è quella della produzione di Metanolo, un alcol sintetizzato a partire dal metano, che si differenzia per avere uno dei 4 legami del carbonio, sostituito con un OH invece di un semplice H.</p>
+            <p>
+                Le potenzialità che il fluido comporta sono molteplici, dalla condizione liquida a temperatura ambiente che garantise una stabilità maggiore al composto, al potere calorifico comparabile, se non superiore, a moltissimi combustibili fossili attualmente in uso.
+            </p>
+            </p>
+            <p>
+                In un'ottica di economia circolare può essere il metanolo una soluzione efficace nella riduzione della CO2 attualmente presente in atmosfera?
+            </p>
+
+        </div>
+        <div class="row">
+
+         {% if not answer_given %}
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question2', check_answer=True, answer=True) }}" class="btn btn-success  btn-block">Esatto</a>
+            </div>
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question2', check_answer=True, answer=False) }}" class="btn btn-danger  btn-block">Sbagliato</a>
+            </div>
+          {% else %}
+           <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-success btn-large btn-block" disabled>  Esatto  </button>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-danger btn-large btn-block" disabled>Sbagliato</button>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+  {% if answer_given %}
+  <hr>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+
+          {% if answer %}
+          <p>
+            <h1 style="color: green;">Esatto!</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"></div>
+          {% else %}
+          <p>
+            <h1 style="color: red;">Purtroppo no.</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif"></div>
+          {% endif %}
+
+          <p style="color: grey;">
+           Il metanolo può essere sintetizzato a partire dal metano, e/o grazie all'impiego di idrogeno. Per la sua formazione, inoltre, può essere impiegata CO2 direttamente assorbita dall'atmosfera. In quest'ottica quindi, il metanolo diventa un vettore energetico circolare dove la produzione di CO2 alla combustione è giustificata dall'assorbimento di CO2 in atmosfera alla produzione.
+ <a href="https://www.eni.com/en-IT/operations/methanol-gas-co2.html">Se vuoi saperne di più</a>
+          </p>
+          <br>
+          <p><h2>A proposito..</h2></p>
+          <p>
+              Al corso di impianti industriali, quando il mio professore mi parlo degli impianti per il power to gas, decisi che quello sarebbe stato il ramo in cui avrei sviluppato la mia carriera. Il desiderio era mosso da una gratitudine verso la natura, ed un desiderio di restituirle i favori che mi aveva fatto. La mia tesi fu sulla progettazione di un impianto per lo studio e l'analisi di dispositivi per il power to gas, in particolare dell'idrogeno.
+          </p>
+          <a style="color: white;" href="{{ url_for('question3')}}" class="btn btn-primary btn-lg btn-block">Prossima domanda</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+<hr>
+{% include "footer.html" %}

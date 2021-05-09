@@ -1,0 +1,48 @@
+{% include "header.html" %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+<header class="masthead" style="background-image: url('https://www.metsoc.org/wp-content/uploads/2020/05/iStock-612408736-resized-smaller-1024x514.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Classifica</h1>
+            <span class="subheading">Spero che il gioco ti sia piaciuto, grazie di aver giocato.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <p>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Punteggio</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for user in users %}
+                <tr>
+                  <th scope="row">{{user.ranking}}</th>
+                  <td>{{user.name}}</td>
+                  <td>{{user.score}}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<hr>
+{% include "footer.html" %}

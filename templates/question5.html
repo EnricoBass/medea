@@ -1,0 +1,90 @@
+{% include "header.html" %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+<header class="masthead" style="background-image: url('https://hbr.org/resources/images/article_assets/2020/03/Mar20_12_115049941.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Domanda n.5</h1>
+            <span class="subheading">Il gioco di squadra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <p>
+            <h1><strong>Nessun uomo è un isola</strong></h1>
+          </p>
+          <p>
+            ENI vanta oltre 30000 persone sparse in tutto il mondo. La capacità di lavoro di squadra in un organizzazione così estesa è essenziale. ENI investe molto in formazione del suo personale e sull'egualità dei suoi dipendenti.
+          </p>
+          <p>
+            Credi che in ENI lavorino più persone in Italia o fuori?
+          </p>
+        </div>
+        <div class="row">
+
+          {% if not answer_given %}
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question5', check_answer=True, answer=True) }}" class="btn btn-success  btn-block">Italia</a>
+            </div>
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question5', check_answer=True, answer=False) }}" class="btn btn-danger  btn-block">Resto del mondo</a>
+            </div>
+          {% else %}
+           <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-success btn-large btn-block" disabled>Italia</button>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-danger btn-large btn-block" disabled>Resto del mondo</button>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+  {% if answer_given %}
+  <hr>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+
+          {% if answer %}
+          <p>
+            <h1 style="color: green;">Esatto!</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"></div>
+          {% else %}
+          <p>
+            <h1 style="color: red;">Purtroppo no.</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif"></div>
+          {% endif %}
+
+          <p style="color: grey;">
+            Malgrado ENI sia ampiamente diffusa in tutto il mondo, la maggior parte dei suoi operatori lavora in Italia. I numeri di dipendenti esteri raggiunge comunque quasi le 10000 unità.
+          </p>
+          <br>
+          <p><h2>A proposito..</h2></p>
+          <p>
+            Il lavoro di squadra è un aspetto essenziale di un'azienda che lavora bene. La complessità di gestione e lo sviluppo tecnologico che stiamo vivendo al giorno d'oggi, richiede competenze che difficilmente un solo uomo possiede. Il dialogo ed il confronto sono punti essenziali per un lavoro puntuale ed in armonia.
+          <p>Nella mia esperienza di vita personale ho capito che la vera chiave del successo di un team sta nell'ascolto reciproco, e nella determinazione di ogniuno di fare il proprio meglio per il raggiungimento dello scopo.</p>
+           </p>
+          <a style="color: white;" href="{{ url_for('ranking')}}" class="btn btn-primary btn-lg btn-block">Vai alla classifica</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+<hr>
+{% include "footer.html" %}

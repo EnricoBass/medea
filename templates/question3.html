@@ -1,0 +1,120 @@
+{% include "header.html" %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+<header class="masthead" style="background-image: url('https://www.worldexcellence.com/wp-content/uploads/2019/06/world-excellence-le-fonti.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Domanda n.3</h1>
+            <span class="subheading">La presenza di ENI nel mondo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <p>
+            <h1><strong>ENI </strong></h1>
+          </p>
+          <p>
+            ENI è una compagnia internazionale. Non solo opera in molti stati diversi, ma è anche impegnata in opere di valorizzazione del territorio ed aiuto in regioni meno fortunate, come la Nigeria.
+          </p>
+          <p>
+            ENI opera in circa 40 stati nel mondo. Questa affermazione è vera o falsa?
+          </p>
+        </div>
+        <div class="row">
+
+          {% if not answer_given %}
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question3', check_answer=True, answer=True) }}" class="btn btn-success  btn-block">Vera</a>
+            </div>
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question3', check_answer=True, answer=False) }}" class="btn btn-danger  btn-block">Falsa</a>
+            </div>
+          {% else %}
+           <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-success btn-large btn-block" disabled>Vera</button>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-danger btn-large btn-block" disabled>Falsa</button>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+  {% if answer_given %}
+  <hr>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+
+          {% if answer %}
+          <p>
+            <h1 style="color: green;">Esatto!</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"></div>
+          {% else %}
+          <p>
+            <h1 style="color: red;">Purtroppo no.</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif"></div>
+          {% endif %}
+
+          <p style="color: grey;">
+            Eni è presente in 68 stati e vanta più di 30000 collaboratori. Come anticipato è molto attiva in opere di aiuto e valorizzazione del territorio in paesi meno fortunati o in via di sviluppo
+            <a href="https://www.eni.com/en-IT/global-presence.html">La presenza di ENI nel mondo</a>
+          </p>
+          <br>
+          <p><h2>A proposito..</h2></p>
+          <p>
+            Negli ultimi anni ho scoperto la passione per il viaggiare. Il tutto è iniziato con il mio viaggio per la laurea triennale in Thailandia, fatto in solitaria, in cui sono andato ad allenarmi per un'arte marziale che facevo al tempo.
+            <p>Da lì ho inizato ad organizzarmi per fare più viaggi possibili, in base alle mie possibilità economiche. Viaggiare apre nuovi orizzonti su cosa sia il mondo e su quanto ancora ci sia da scoprire</p>
+
+          <section class='colored-section'  id="testimonials">
+          <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+              <div class="carousel-inner">
+                <div class="carousel-item active container-fluid">
+                  <h2 class='testimonial-text'>Cercando di darmi un tono in Thailandia</h2>
+                  <img class="testimonial-image" src="./static/img/thailand.jpeg" alt="Thailand"><br>
+                  <em>The marble Buddha</em>
+                </div>
+                <div class="carousel-item container-fluid">
+                  <h2 class="testimonial-text">A caccia di arcobaleni alle scogliere di Moher in Irlanda</h2>
+                  <img class="testimonial-image" src="./static/img/irland.jpeg" alt="Irland"><br>
+                  <em>Galway</em>
+                </div>
+                <div class="carousel-item container-fluid">
+                  <h2 class="testimonial-text">Nuovi incontri in Grecia</h2>
+                  <img class="testimonial-image" src="./static/img/greece.jpeg" alt="Greece"><br>
+                  <em>Moscoforo</em>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </a>
+            </div>
+            </section>
+          </p>
+
+          <a style="color: white;" href="{{ url_for('question4')}}" class="btn btn-primary btn-lg btn-block">Prossima domanda</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+<hr>
+{% include "footer.html" %}

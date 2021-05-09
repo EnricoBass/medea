@@ -1,0 +1,39 @@
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8bJFCsq3f3jzBwhnVwEypKwvgMUFCW8iKGw&usqp=CAU')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Medea Quiz</h1>
+            <span class="subheading">Il primo quiz(spero..) a riguardo.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <p><strong>Ciao Medea.</strong><br><br>Ho creato questo piccolo sito per ritornarti il favore del quiz proposto all'inizio del webinar di presentazione. Non richiederà molto tempo. saranno solo 5 domande, prese dal sito di ENI, che spero ti permettano di conoscermi meglio. Ho creato anche una classifica per tenere conto del punteggio nel caso ci sia più di un giocatore.<br><br> Detto ciò, se vuoi giocare, inserisci il tuo nome qua sotto e buona fortuna!</p>
+          <br><br><br>
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+        </div>
+      </div>
+    </div>
+  </div>
+<hr>
+{% include "footer.html" %}

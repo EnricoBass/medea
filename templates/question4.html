@@ -1,0 +1,91 @@
+{% include "header.html" %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+<header class="masthead" style="background-image: url('https://www.pbctoday.co.uk/news/wp-content/uploads/2020/05/%C2%A9-Banjong-Khanyai.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Domanda n.4</h1>
+            <span class="subheading">La sicurezza prima di tutto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <p>
+            <h1><strong>L'approccio di ENI sulla sicurezza</strong></h1>
+          </p>
+          <p>
+            ENI tiene particolarmente alla sicurezza dei suoi operatori e collaboratori. Per questo nel 2019 ha preso parte al European Process Safety Center(EPSC) che definisce regole e fondamentali per lavorare in sicurezza. Gli strumenti utilizzati da ENI per la formazione degli operatori, quanto per garantire la loro sicurezza, sono molteplici.
+          <p>Tra i protocolli di formazione di cui ENI dispone, credi ce ne siano alcuni anche che comprendono ambienti virtuali?</p>
+          </p>
+        </div>
+        <div class="row">
+
+        {% if not answer_given %}
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question4', check_answer=True, answer=True) }}" class="btn btn-success  btn-block">Sì</a>
+            </div>
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question4', check_answer=True, answer=False) }}" class="btn btn-danger  btn-block">No</a>
+            </div>
+          {% else %}
+           <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-success btn-large btn-block" disabled>Sì</button>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-danger btn-large btn-block" disabled>No</button>
+          </div>
+          {% endif %}
+
+
+        </div>
+      </div>
+    </div>
+
+  {% if answer_given %}
+  <hr>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+
+          {% if answer %}
+          <p>
+            <h1 style="color: green;">Esatto!</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"></div>
+          {% else %}
+          <p>
+            <h1 style="color: red;">Purtroppo no.</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif"></div>
+          {% endif %}
+
+          <p style="color: grey;">
+            ENI ha investito su alcune tecnologie all'avanguardia per il monitoraggio e per la formazione del suo personale. Tra queste ci sono anche gli ambienti virtuali che hanno lo scopo di simulare scenari pericolosi il più smili possibile alla realtà, così da abituare l'operatore a reagire in caso di necessità.
+            <a href="https://www.eni.com/en-IT/just-transition/culture-of-safety.html">L'approccio sulla sicurezza in ENI.</a>
+          </p>
+          <br>
+          <p><h2>A proposito..</h2></p>
+          <p>
+            Nel 2017 mi sono appassionato molto al mondo della scalata, passione che mi ha portato a passare il capodanno di quell'anno attaccato ad una parete in croazia a 25 metri d'altezza. Il mondo della scalata è un mondo davvero affascinante e coinvolgente, ma richiede un'attenzione particolare. Quando si scala in coppia, si tiene la vita del compagno nelle proprie mani, e quì la conoscenza dei propri limiti, quanto essere focalizzati nel cosa si stia facendo sono elementi fondamentali per godersi l'esperienza al meglio.
+            <img class="testimonial-image2" src="./static/img/croatia.jpeg" alt="Croatia"><br>
+          </p>
+
+          <a style="color: white;" href="{{ url_for('question5')}}" class="btn btn-primary btn-lg btn-block">Prossima domanda</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+<hr>
+{% include "footer.html" %}

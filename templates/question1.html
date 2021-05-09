@@ -1,0 +1,92 @@
+{% extends 'bootstrap/base.html' %}
+
+{%block content %}
+{% include "header.html" %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+
+<header class="masthead" style="background-image: url('https://www.gelestatic.it/thimg/H8I0teJy3hdU7PgI5aN77tjrnhQ=/fit-in/960x540/https%3A//www.lastampa.it/image/contentid/policy%3A1.37541034%3A1569670704/nature-3294681_1920.jpg%3Ff%3Ddetail_558%26h%3D720%26w%3D1280%26%24p%24f%24h%24w%3Da2243f2')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Domanda n.1</h1>
+            <span class="subheading">La protezione delle foreste</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <p>
+            <h1><strong>L'impegno di ENI nella salvaguardia delle foreste</strong></h1>
+          </p>
+          <p>
+            Con il trattato di Parigi, sottoscritto nel 2015 e firmato nel novembre 2018, 183 nazioni hanno preso a carico il compito di contenere l'aumento della temperatura media globale attuando politiche per ridurre le emissioni di gas serra e per aumentare o preservare la capacità di assorbimento della CO2, come indicato dalle <a href="https://www.nature.org/en-us/what-we-do/our-insights/perspectives/natural-climate-solutions/#:~:text=Natural%20climate%20solutions%20are%20conservation,and%20wetlands%20across%20the%20globe.&text=The%20framework%20of%20this%20study,potential%20into%2020%20mitigation%20pathways.">Natural Climate Solutions (NCS)</a>. <p>ENI è una parte attiva in quest'ultima tipologia di azioni ed è impegnata nella conservazione di alcune foreste.</p>
+          <p>sai qual'è la tipologia di foreste nelle quali ENI è più attiva?</p>
+          </p>
+        </div>
+        <div class="row">
+
+          {% if not answer_given %}
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question1', check_answer=True, answer=True) }}" class="btn btn-success  btn-block">Foreste Pluviali</a>
+            </div>
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <a href="{{ url_for('question1', check_answer=True, answer=False) }}" class="btn btn-danger  btn-block">Foreste Tropicali</a>
+            </div>
+          {% else %}
+           <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-success btn-large btn-block" disabled>Foreste Pluviali</button>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-danger btn-large btn-block" disabled>Foreste Tropicali</button>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+  {% if answer_given %}
+  <hr>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+
+          {% if answer %}
+          <p>
+            <h1 style="color: green;">Esatto!</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"></div>
+          {% else %}
+          <p>
+            <h1 style="color: red;">Purtroppo no.</h1>
+          </p>
+          <div class="img-container"><img src="https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif"></div>
+          {% endif %}
+
+          <p style="color: grey;">
+            Eni si sta effettivamente impegnando nella protezione delle foreste tropicali, che comprendono circa il 45% delle aree coperte da foreste a livello globale, e che hanno alte capcaità di assorbire CO2, in particolare in paesi in via di sviluppo.<br><a href="https://www.eni.com/en-IT/low-carbon/forest-protection-conservation.html">Per saperne di più.</a>
+          </p>
+          <br>
+          <p><h2>A proposito..</h2></p>
+          <p>
+            Nel 2016 facevo parte del gruppo scout del mio paese. Per festeggiare l'anniversario dei 70 anni del gruppo, e nel desiderio di essere impegnati in maniera concreta nella tematica del riscaldamento globale, io ed altri mie colleghi capi scout abbiamo deciso di donare e piantare 70 alberi nel nostro comune.
+            <a href="http://www.ilcamposampierese.it/notizia/settantanni-di-scoutismo">Se vuoi saperne di più clicca quì.</a>
+          </p>
+          <a style="color: white;" href="{{ url_for('question2')}}" class="btn btn-primary btn-lg btn-block">Prossima domanda</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+<hr>
+{% include "footer.html" %}
+{% endblock %}
