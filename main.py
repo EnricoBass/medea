@@ -145,12 +145,14 @@ def question5():
 @app.route('/ranking', methods=['GET', 'POST'])
 def ranking():
     all_users = User.query.order_by(User.score).all()
-    all_users.reverse()
-    for i in range(len(all_users)):
-        all_users[i].ranking = i+1
-    db.session.commit()
-    logout_user()
-    return render_template('ranking.html', users=all_users)
+    if all_users != None:
+        all_users.reverse()
+        for i in range(len(all_users)):
+            all_users[i].ranking = i+1
+        db.session.commit()
+        logout_user()
+        return render_template('ranking.html', users=all_users)
+    return render_template('ranking.html', users=None)
 
 
 @app.route('/delete')
